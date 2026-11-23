@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 880" width="1160" height="880" style="background:#0f172a; font-family:'Segoe UI', -apple-system, Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradTitle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#be123c"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="1120" height="75" rx="10" fill="url(#gradTitle)" stroke="#334155" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="580" y="45" text-anchor="middle" fill="#38bdf8" font-size="18" font-weight="800" letter-spacing="0.5">HỆ THỐNG SERVER CHUẨN THƯƠNG MẠI QUẢN TRỊ 1.000 LOA XIAOZHI (PHIÊN BẢN 2.1)</text>
+  <text x="580" y="68" text-anchor="middle" fill="#94a3b8" font-size="12.5">Kiến trúc Microservices Phân cụm Không trạng thái (Stateless) | AuthToken AES-GCM (1A) | Chống Spam OTA 2C | Khóa Phân tán Tuya 3A</text>
+
+  <!-- ================= ROW 1: TẦNG CLIENT & INGRESS ================= -->
+  <!-- Box 1: Client Fleet -->
+  <rect x="20" y="105" width="340" height="135" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="20" y="105" width="340" height="32" rx="8" fill="url(#gradBlue)"/>
+  <text x="190" y="126" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">1. ĐỘI THIẾT BỊ THƯƠNG MẠI (1.000+ LOA)</text>
+  <rect x="30" y="145" width="95" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="77" y="170" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700">ESP32 Loa #001</text>
+  <text x="77" y="190" text-anchor="middle" fill="#64748b" font-size="9.5">WiFi + Opus</text>
+  <text x="77" y="210" text-anchor="middle" fill="#10b981" font-size="9.5">Activating (2C)</text>
+
+  <rect x="142" y="145" width="95" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="190" y="170" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700">ESP32 Loa #002</text>
+  <text x="190" y="190" text-anchor="middle" fill="#64748b" font-size="9.5">WiFi + Opus</text>
+  <text x="190" y="210" text-anchor="middle" fill="#10b981" font-size="9.5">Activating (2C)</text>
+
+  <rect x="255" y="145" width="95" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="302" y="170" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700">ESP32 Loa #1000</text>
+  <text x="302" y="190" text-anchor="middle" fill="#64748b" font-size="9.5">Backoff Polling</text>
+  <text x="302" y="210" text-anchor="middle" fill="#eab308" font-size="9.5">TTL 5 phút</text>
+
+  <!-- Box 2: Ingress Gateway -->
+  <rect x="410" y="105" width="340" height="135" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="410" y="105" width="340" height="32" rx="8" fill="url(#gradCyan)"/>
+  <text x="580" y="126" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">2. CỬA NGÕ INGRESS TLS 1.3 (PORT 443)</text>
+  <text x="425" y="160" fill="#e2e8f0" font-size="11.5" font-weight="600">• Cân bằng tải: Nginx least_conn thuật toán</text>
+  <text x="425" y="182" fill="#e2e8f0" font-size="11.5" font-weight="600">• Bảo vệ 2C: limit_req /xiaozhi/ota/ + Retry-After</text>
+  <text x="425" y="204" fill="#e2e8f0" font-size="11.5" font-weight="600">• Chống Zombie: Ping 30s | proxy_read_timeout 300s</text>
+  <text x="425" y="226" fill="#38bdf8" font-size="11" font-weight="700">• Định tuyến WSS 443 sang cụm Workers 8001–8004</text>
+
+  <!-- Box 3: Web Portal & Mobile App -->
+  <rect x="800" y="105" width="340" height="135" rx="8" fill="#1e293b" stroke="#d97706" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="800" y="105" width="340" height="32" rx="8" fill="url(#gradAmber)"/>
+  <text x="970" y="126" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">GIAO DIỆN NGƯỜI DÙNG &amp; QUẢN TRỊ</text>
+  <text x="815" y="160" fill="#e2e8f0" font-size="11.5" font-weight="600">• Web Console Portal / eSunhouse App</text>
+  <text x="815" y="182" fill="#e2e8f0" font-size="11.5" font-weight="600">• Nhập mã PIN 6 số ghép nối loa (TTL 5m)</text>
+  <text x="815" y="204" fill="#e2e8f0" font-size="11.5" font-weight="600">• Tùy biến Agent Profile (Prompt, Giọng TTS)</text>
+  <text x="815" y="226" fill="#f87171" font-size="11" font-weight="700">• Lệnh 'Hủy liên kết' ngắt socket tức thì &lt;= 500ms</text>
+
+  <!-- Arrow Client -> Nginx -->
+  <line x1="360" y1="172" x2="402" y2="172" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <polygon points="408,172 398,167 398,177" fill="#38bdf8"/>
+  <text x="385" y="163" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="700">WSS/OTA</text>
+
+  <!-- Arrow Portal -> Manager API -->
+  <line x1="970" y1="240" x2="970" y2="272" stroke="#fbbf24" stroke-width="2.5"/>
+  <polygon points="970,278 965,268 975,268" fill="#fbbf24"/>
+  <text x="985" y=\"262\" fill="#fbbf24" font-size="9" font-weight="700">REST API</text>
+
+  <!-- ================= ROW 2: VOICE CORE CLUSTER & CONTROL/MCP ================= -->
+  <!-- Box 4: Voice Core Cluster (Stateless) -->
+  <rect x="20" y="275" width="540" height="245" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="20" y="275" width="540" height="32" rx="8" fill="url(#gradEmerald)"/>
+  <text x="290" y="296" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">3. CỤM VOICE WORKERS KHÔNG TRẠNG THÁI (STATELESS - 8001 ĐẾN 8004)</text>
+  
+  <!-- 4 Workers mini boxes -->
+  <rect x="35" y="318" width="115" height="65" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="92" y="338" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">Worker 1 (8001)</text>
+  <text x="92" y="356" text-anchor="middle" fill="#94a3b8" font-size="9.5">AuthToken AES-GCM</text>
+  <text x="92" y="372" text-anchor="middle" fill="#64748b" font-size="9">VAD + Orchestrator</text>
+
+  <rect x="165" y="318" width="115" height="65" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="222" y="338" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">Worker 2 (8002)</text>
+  <text x="222" y="356" text-anchor="middle" fill="#94a3b8" font-size="9.5">AuthToken AES-GCM</text>
+  <text x="222" y="372" text-anchor="middle" fill="#64748b" font-size="9">VAD + Orchestrator</text>
+
+  <rect x="295" y="318" width="115" height="65" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="352" y="338" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">Worker 3 (8003)</text>
+  <text x="352" y="356" text-anchor="middle" fill="#94a3b8" font-size="9.5">AuthToken AES-GCM</text>
+  <text x="352" y="372" text-anchor="middle" fill="#64748b" font-size="9">VAD + Orchestrator</text>
+
+  <rect x="425" y="318" width="115" height="65" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="482" y="338" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">Worker 4 (8004)</text>
+  <text x="482" y="356" text-anchor="middle" fill="#94a3b8" font-size="9.5">AuthToken AES-GCM</text>
+  <text x="482" y="372" text-anchor="middle" fill="#64748b" font-size="9">VAD + Orchestrator</text>
+
+  <!-- Worker features description -->
+  <rect x="35" y="395" width="505" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="50" y="418" fill="#e2e8f0" font-size="11" font-weight="600">• Chuẩn hóa Token (1A): Giải mã 1 AuthToken AES-GCM duy nhất bằng server.auth_key</text>
+  <text x="50" y="438" fill="#e2e8f0" font-size="11" font-weight="600">• Thu hồi liên cụm: Nhận Pub/Sub 'xiaozhi:control:revoke' ngắt socket ngay &lt;= 200ms</text>
+  <text x="50" y="458" fill="#e2e8f0" font-size="11" font-weight="600">• Không trạng thái (Stateless): Không ghi file local, không xung đột .memory.yaml</text>
+  <text x="50" y="478" fill="#38bdf8" font-size="11" font-weight="700">• Session Registry: Ánh xạ session:{mac} = worker_id lên Redis để định tuyến ngắt phiên</text>
+  <text x="50" y="496" fill="#a7f3d0" font-size="10.5">• Điều phối phi tập trung: Chuyển dữ liệu ASR, TTS và LLM ra tầng Compute độc lập</text>
+
+  <!-- Arrow Nginx -> Voice Workers -->
+  <path d="M 480 240 L 480 258 L 290 258 L 290 270" fill="none" stroke="#10b981" stroke-width="2.5"/>
+  <polygon points="290,274 285,264 295,264" fill="#10b981"/>
+  <text x="380" y="254" text-anchor="middle" fill="#10b981" font-size="9" font-weight="700">least_conn WSS</text>
+
+  <!-- Box 5: Control & MCP Hubs -->
+  <rect x="600" y="275" width="540" height="245" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="600" y="275" width="540" height="32" rx="8" fill="url(#gradPurple)"/>
+  <text x="870" y="296" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">4. TRUNG TÂM QUẢN TRỊ &amp; CÁC MCP HUB ĐỘC LẬP</text>
+
+  <!-- Card 5.1: Manager API -->
+  <rect x="615" y="318" width="510" height="58" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+  <text x="630" y="338" fill="#c084fc" font-size="11.5" font-weight="700">Manager API &amp; OTA Auth Core (FastAPI - Port 8000)</text>
+  <text x="630" y="358" fill="#94a3b8" font-size="10.5">Cấp mã PIN 6 số, cấp AuthToken AES-GCM (1A), Deep-merge config_loader.py, Publish Revoke</text>
+
+  <!-- Card 5.2: MCP SmartHome Hub -->
+  <rect x="615" y="385" width="510" height="65" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+  <text x="630" y="405" fill="#38bdf8" font-size="11.5" font-weight="700">MCP SmartHome Hub (Độc lập - Port 8005) [85% Chuẩn Thương Mại]</text>
+  <text x="630" y="425" fill="#e2e8f0" font-size="10.5">• Khóa phân tán Tuya (3A): SET NX PX 30s + Double-Check DB + Lua Unlock (Không rớt Token)</text>
+  <text x="630" y="442" fill="#94a3b8" font-size="10">• TokenVault AES-256-GCM, băm UID SHA-256 (NĐ 356/2025/NĐ-CP), JSON-RPC MCP Tools</text>
+
+  <!-- Card 5.3: MCP Sunhouse RAG -->
+  <rect x="615" y="458" width="510" height="52" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="630" y="478" fill="#fbbf24" font-size="11.5" font-weight="700">MCP Sunhouse RAG (Độc lập - Port 8006)</text>
+  <text x="630" y="498" fill="#94a3b8" font-size="10.5">Truy vấn tri thức sản phẩm, bảo hành, HDSD Sunhouse | Giữ nguyên 100% không đổi mã nguồn</text>
+
+  <!-- Arrow Nginx -> Manager API -->
+  <path d="M 670 240 L 670 258 L 780 258 L 780 310" fill="none" stroke="#c084fc" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="780,316 775,306 785,306" fill="#c084fc"/>
+  <text x="740" y="254" fill="#c084fc" font-size="9" font-weight="700">/xiaozhi/ota/</text>
+
+  <!-- Arrow Voice Workers <-> MCP Hubs -->
+  <line x1="560" y1="418" x2="608" y2="418" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="614,418 604,413 604,423" fill="#38bdf8"/>
+  <polygon points="560,418 570,413 570,423" fill="#38bdf8"/>
+  <text x="585" y="411" text-anchor="middle" fill="#38bdf8" font-size="8.5" font-weight="700">MCP</text>
+
+  <!-- ================= ROW 3: DECOUPLED AI & DATA STORAGE ================= -->
+  <!-- Box 6: Decoupled AI Compute Tier -->
+  <rect x="20" y="540" width="540" height="225" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="20" y="540" width="540" height="32" rx="8" fill="url(#gradRose)"/>
+  <text x="290" y="561" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">6. TẦNG TÍNH TOÁN AI TÁCH BIỆT (DECOUPLED COMPUTE TIER)</text>
+
+  <!-- Compute Cards -->
+  <rect x="35" y="585" width="505" height="48" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+  <text x="50" y="605" fill="#fda4af" font-size="11" font-weight="700">Cụm ASR Streaming Tách Rời (FunASRServer GPU / Cloud Streaming ASR)</text>
+  <text x="50" y="622" fill="#94a3b8" font-size="10">Giải phóng CPU khỏi FunASR local, độ trễ &lt; 400ms, tối ưu SileroVAD giảm 30% băng thông</text>
+
+  <rect x="35" y="642" width="505" height="48" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+  <text x="50" y="662" fill="#fda4af" font-size="11" font-weight="700">Cụm TTS Streaming Tách Rời (GPU VieneuTTS Pool / Cloud TTS Concurrency &gt;= 200)</text>
+  <text x="50" y="679" fill="#94a3b8" font-size="10">Chấm dứt nghẽn GIL/CPU do Vieneu/Piper chạy trong Voice Worker, TTS Keep-Warm duy trì</text>
+
+  <rect x="35" y="699" width="505" height="52" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1"/>
+  <text x="50" y="719" fill="#fda4af" font-size="11" font-weight="700">LLM Key Pool &amp; AI Gateway (LiteLLM Proxy - 3 đến 5 API Keys)</text>
+  <text x="50" y="738" fill="#94a3b8" font-size="10">Xoay vòng Round-Robin + Circuit Breaker: Tự động cách ly Key bị 429 Too Many Requests trong 60s</text>
+
+  <!-- Arrow Voice Workers -> Compute -->
+  <line x1="290" y1="520" x2="290" y2="534" stroke="#f43f5e" stroke-width="2.5"/>
+  <polygon points="290,538 285,528 295,528" fill="#f43f5e"/>
+  <text x="340" y="532" fill="#f43f5e" font-size="8.5" font-weight="700">Streams &amp; Inference</text>
+
+  <!-- Box 7: Data Storage & Cache Tier -->
+  <rect x="600" y="540" width="540" height="225" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="600" y="540" width="540" height="32" rx="8" fill="url(#gradEmerald)"/>
+  <text x="870" y="561" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">5. TẦNG DỮ LIỆU &amp; CACHE TẬP TRUNG (ZERO-LOCK PERSISTENCE)</text>
+
+  <!-- Storage Cards -->
+  <rect x="615" y="585" width="245" height="165" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="737" y="608" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">PostgreSQL 16 + PgBouncer</text>
+  <text x="630" y="630" fill="#e2e8f0" font-size="10.5">• PgBouncer pool_mode = transaction</text>
+  <text x="630" y="650" fill="#e2e8f0" font-size="10.5">• max_client_conn = 1000 | pool = 50</text>
+  <text x="630" y="670" fill="#e2e8f0" font-size="10.5">• Thay thế SQLite smarthome.db</text>
+  <text x="630" y="690" fill="#e2e8f0" font-size="10.5">• Users, Speakers, Agent Profiles</text>
+  <text x="630" y="710" fill="#e2e8f0" font-size="10.5">• TokenVault giải mã chuẩn 100%</text>
+  <text x="630" y="732" fill="#34d399" font-size="10" font-weight="700">✓ Triệt tiêu Tử huyệt 1 Database Locked</text>
+
+  <rect x="880" y="585" width="245" height="165" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <text x="1002" y="608" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="700">Redis 7 Cluster / Replica (AOF+RDB)</text>
+  <text x="895" y="630" fill="#e2e8f0" font-size="10.5">• mem_redis: Hash theo user:device</text>
+  <text x="895" y="650" fill="#e2e8f0" font-size="10.5">• In-Memory Cache Agent (TTL 120s)</text>
+  <text x="895" y="670" fill="#e2e8f0" font-size="10.5">• Pub/Sub: xiaozhi:control:revoke</text>
+  <text x="895" y="690" fill="#e2e8f0" font-size="10.5">• Khóa 3A: lock:tuya_refresh:{user}</text>
+  <text x="895" y="710" fill="#e2e8f0" font-size="10.5">• mốc revoked_before chặn reconnect</text>
+  <text x="895" y="732" fill="#f87171" font-size="10" font-weight="700">✓ Triệt tiêu Tử huyệt 2 Hỏng file YAML</text>
+
+  <!-- Arrow Workers <-> Redis -->
+  <path d="M 480 520 L 480 535 L 900 535 L 900 580" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="900,585 895,575 905,575" fill="#38bdf8"/>
+  <text x="710" y="530" text-anchor="middle" fill="#38bdf8" font-size="8.5" font-weight="700">Mem/Config/Revoke</text>
+
+  <!-- Arrow Manager -> PgBouncer & Redis -->
+  <line x1="740" y1="520" x2="740" y2="580" stroke="#10b981" stroke-width="2"/>
+  <polygon points="740,585 735,575 745,575" fill="#10b981"/>
+
+  <line x1="1000" y1="520" x2="1000" y2="580" stroke="#a855f7" stroke-width="2"/>
+  <polygon points="1000,585 995,575 1005,575" fill="#a855f7"/>
+
+  <!-- ================= ROW 4: BOTTOM QUALITY GATES BAR ================= -->
+  <rect x="20" y="780" width="1120" height="80" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="580" y="803" text-anchor="middle" fill="#f8fafc" font-size="11.5" font-weight="700">BỘ 7 TIÊU CHUẨN NGHIỆM THU THƯƠNG MẠI (COMMERCIAL QUALITY GATES - EXIT CRITERIA)</text>
+  
+  <rect x="35" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="107" y="830" text-anchor="middle" fill="#60a5fa" font-size="9.5" font-weight="700">QG-01: Chịu tải 1000 loa</text>
+  <text x="107" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">24h Soak Test &lt; 0.1% rớt</text>
+
+  <rect x="193" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#06b6d4" stroke-width="1"/>
+  <text x="265" y="830" text-anchor="middle" fill="#22d3ee" font-size="9.5" font-weight="700">QG-02: Độ trễ P95</text>
+  <text x="265" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">150 loa nói &lt;= 1.8s</text>
+
+  <rect x="351" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="423" y="830" text-anchor="middle" fill="#34d399" font-size="9.5" font-weight="700">QG-03: Cô lập Tenant</text>
+  <text x="423" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">Không chéo bộ nhớ / DP</text>
+
+  <rect x="509" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#eab308" stroke-width="1"/>
+  <text x="581" y="830" text-anchor="middle" fill="#facc15" font-size="9.5" font-weight="700">QG-04: Khóa phân tán 3A</text>
+  <text x="581" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">0 lỗi DB Lock / Tuya Token</text>
+
+  <rect x="667" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#ec4899" stroke-width="1"/>
+  <text x="739" y="830" text-anchor="middle" fill="#f472b6" font-size="9.5" font-weight="700">QG-05: Thu hồi &lt;= 500ms</text>
+  <text x="739" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">Redis Pub/Sub ngắt tức thì</text>
+
+  <rect x="825" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="897" y="830" text-anchor="middle" fill="#a78bfa" font-size="9.5" font-weight="700">QG-06: Vá Lỗ hổng #3456</text>
+  <text x="897" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">Xóa backdoor, token chuẩn 1A</text>
+
+  <rect x="983" y="815" width="145" height="35" rx="5" fill="#0f172a" stroke="#14b8a6" stroke-width="1"/>
+  <text x="1055" y="830" text-anchor="middle" fill="#2dd4bf" font-size="9.5" font-weight="700">QG-07: Bảo toàn Hubs</text>
+  <text x="1055" y="843" text-anchor="middle" fill="#94a3b8" font-size="8.5">Zero-Regression SmartHome</text>
+</svg>

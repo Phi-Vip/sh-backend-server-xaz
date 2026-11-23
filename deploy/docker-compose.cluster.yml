@@ -1,0 +1,158 @@
+# ==============================================================================
+# CẤU HÌNH DOCKER COMPOSE PHÂN CỤM MULTI-WORKER VOICE CORE (GIAI ĐOẠN 4)
+# 4 Stateless Workers + Redis + PgBouncer/Postgres + Nginx Load Balancer
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  # Cụm 4 Stateless Voice Workers
+  voice-worker-1:
+    image: xiaozhi-voice-core:latest
+    container_name: xiaozhi-voice-worker-1
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1536M
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - WORKER_ID=worker_01
+      - WS_PORT=8001
+      - HTTP_PORT=8011
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8001:8001"
+      - "8011:8011"
+    volumes:
+      - ./data:/opt/xiaozhi-server/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - xiaozhi_cluster_net
+
+  voice-worker-2:
+    image: xiaozhi-voice-core:latest
+    container_name: xiaozhi-voice-worker-2
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1536M
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - WORKER_ID=worker_02
+      - WS_PORT=8002
+      - HTTP_PORT=8012
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8002:8002"
+      - "8012:8012"
+    volumes:
+      - ./data:/opt/xiaozhi-server/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8012/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - xiaozhi_cluster_net
+
+  voice-worker-3:
+    image: xiaozhi-voice-core:latest
+    container_name: xiaozhi-voice-worker-3
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1536M
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - WORKER_ID=worker_03
+      - WS_PORT=8003
+      - HTTP_PORT=8013
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8003:8003"
+      - "8013:8013"
+    volumes:
+      - ./data:/opt/xiaozhi-server/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8013/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - xiaozhi_cluster_net
+
+  voice-worker-4:
+    image: xiaozhi-voice-core:latest
+    container_name: xiaozhi-voice-worker-4
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1536M
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - WORKER_ID=worker_04
+      - WS_PORT=8004
+      - HTTP_PORT=8014
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8004:8004"
+      - "8014:8014"
+    volumes:
+      - ./data:/opt/xiaozhi-server/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8014/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - xiaozhi_cluster_net
+
+  # Nginx Cửa ngõ Cân bằng tải & An ninh biên (chống CVE-2026-123007)
+  nginx:
+    image: nginx:1.26-alpine
+    container_name: xiaozhi-nginx-ingress
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - voice-worker-1
+      - voice-worker-2
+      - voice-worker-3
+      - voice-worker-4
+    networks:
+      - xiaozhi_cluster_net
+
+  # Redis Trí nhớ phân tán & Kênh Pub/Sub thu hồi tức thì
+  redis:
+    image: redis:7.2-alpine
+    container_name: xiaozhi-redis-cluster
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+    networks:
+      - xiaozhi_cluster_net
+
+networks:
+  xiaozhi_cluster_net:
+    driver: bridge

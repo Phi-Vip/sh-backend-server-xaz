@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1020" width="1160" height="1020" style="background:#0f172a; font-family:'Segoe UI', -apple-system, Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="seqTitle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="p1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="p2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="p3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#881337"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="15" width="1120" height="70" rx="8" fill="url(#seqTitle)" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="44" text-anchor="middle" fill="#38bdf8" font-size="17" font-weight="800" letter-spacing="0.5">VÒNG ĐỜI THIẾT BỊ, CẤP AUTHTOKEN THỐNG NHẤT (1A) &amp; THU HỒI QUYỀN TỨC THÌ &lt;= 500MS</text>
+  <text x="580" y="66" text-anchor="middle" fill="#94a3b8" font-size="12">Phối hợp 2 chiều: Server Rate-Limit + Firmware Activating Exponential Backoff (2C) | Redis Pub/Sub Revocation</text>
+
+  <!-- Lifeline Columns (5 participants) -->
+  <!-- 1. Loa ESP32: x=110 -->
+  <!-- 2. Nginx Ingress: x=330 -->
+  <!-- 3. Manager API & OTA: x=550 -->
+  <!-- 4. PostgreSQL + Redis: x=770 -->
+  <!-- 5. Voice Worker Cluster: x=990 -->
+  <!-- Actor User & Portal: x=990 or overlay -->
+
+  <!-- Lifeline Headers -->
+  <rect x="40" y="100" width="140" height="42" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="110" y="125" text-anchor="middle" fill="#60a5fa" font-size="11.5" font-weight="700">Loa ESP32-S3</text>
+  <text x="110" y="137" text-anchor="middle" fill="#64748b" font-size="8.5">application.cc / ota.cc</text>
+
+  <rect x="260" y="100" width="140" height="42" rx="6" fill="#1e293b" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="330" y="125" text-anchor="middle" fill="#38bdf8" font-size="11.5" font-weight="700">Nginx Ingress</text>
+  <text x="330" y="137" text-anchor="middle" fill="#64748b" font-size="8.5">Port 443 / Rate Limit 2C</text>
+
+  <rect x="480" y="100" width="140" height="42" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="550" y="125" text-anchor="middle" fill="#c084fc" font-size="11.5" font-weight="700">Manager API</text>
+  <text x="550" y="137" text-anchor="middle" fill="#64748b" font-size="8.5">FastAPI &amp; OTA Auth</text>
+
+  <rect x="700" y="100" width="140" height="42" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="770" y="125" text-anchor="middle" fill="#34d399" font-size="11.5" font-weight="700">PostgreSQL + Redis</text>
+  <text x="770" y="137" text-anchor="middle" fill="#64748b" font-size="8.5">Storage &amp; Pub/Sub</text>
+
+  <rect x="920" y="100" width="140" height="42" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="990" y="125" text-anchor="middle" fill="#fb7185" font-size="11.5" font-weight="700">Voice Worker (800x)</text>
+  <text x="990" y="137" text-anchor="middle" fill="#64748b" font-size="8.5">Stateless WS &amp; Vision</text>
+
+  <!-- Lifeline Dashed Lines -->
+  <line x1="110" y1="145" x2="110" y2="990" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="330" y1="145" x2="330" y2="990" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="550" y1="145" x2="550" y2="990" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="770" y1="145" x2="770" y2="990" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="990" y1="145" x2="990" y2="990" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- ================= PHASE 1: CHƯA KÍCH HOẠT ================= -->
+  <rect x="30" y="160" width="1100" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#1d4ed8" stroke-width="1.5"/>
+  <rect x="38" y="168" width="460" height="24" rx="4" fill="url(#p1Grad)"/>
+  <text x="48" y="184" fill="#ffffff" font-size="11" font-weight="700">PHASE 1: KHỞI ĐỘNG &amp; TRẠNG THÁI CHƯA KÍCH HOẠT (PHÒNG THỦ 2 CHIỀU 2C)</text>
+
+  <!-- Msg 1: ESP -> Nginx -->
+  <line x1="110" y1="210" x2="322" y2="210" stroke="#60a5fa" stroke-width="2"/>
+  <polygon points="328,210 318,206 318,214" fill="#60a5fa"/>
+  <text x="220" y="203" text-anchor="middle" fill="#93c5fd" font-size="10">1. POST /xiaozhi/ota/ (Device-Id: MAC)</text>
+
+  <!-- Msg 2: Nginx -> Manager API -->
+  <line x1="330" y1="230" x2="542" y2="230" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="548,230 538,226 538,234" fill="#38bdf8"/>
+  <text x="440" y="223" text-anchor="middle" fill="#7dd3fc" font-size="10">2. Forward OTA Request</text>
+
+  <!-- Msg 3: Manager -> DB -->
+  <line x1="550" y1="250" x2="762" y2="250" stroke="#34d399" stroke-width="2"/>
+  <polygon points="768,250 758,246 758,254" fill="#34d399"/>
+  <text x="660" y="243" text-anchor="middle" fill="#6ee7b7" font-size="10">3. Tra cứu MAC trong bảng speakers</text>
+
+  <!-- Return 4: DB -> Manager (Chưa kích hoạt) -->
+  <line x1="770" y1="270" x2="558" y2="270" stroke="#a78bfa" stroke-width="1.8" stroke-dasharray="4,3"/>
+  <polygon points="552,270 562,266 562,274" fill="#a78bfa"/>
+  <text x="660" y="265" text-anchor="middle" fill="#c084fc" font-size="9.5">4. Kết quả: is_active = false (Chưa có user_id)</text>
+
+  <!-- Return 5: Manager -> ESP (PIN code, NO TOKEN) -->
+  <line x1="550" y1="300" x2="118" y2="300" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="112,300 122,296 122,304" fill="#fbbf24"/>
+  <text x="330" y="293" text-anchor="middle" fill="#fde047" font-size="10" font-weight="600">5. HTTP 200: JSON {"code": "839201"} • KHÔNG CẤP WEBSOCKET TOKEN (Chặn lỗ hổng #3456)</text>
+
+  <!-- Self Action: ESP switches to Activating -->
+  <rect x="55" y="325" width="480" height="55" rx="5" fill="#0f172a" stroke="#eab308" stroke-width="1.2"/>
+  <text x="65" y="343" fill="#facc15" font-size="10.5" font-weight="700">• ESP32 chuyển sang kDeviceStateActivating: DỪNG mở WebSocket, OLED/Loa phát mã PIN</text>
+  <text x="65" y="360" fill="#94a3b8" font-size="10">• Exponential Backoff: Poll lại /xiaozhi/ota/ (5s -> 10s -> 15s -> max 30s + jitter), dừng sau TTL 5 phút</text>
+  <text x="65" y="375" fill="#38bdf8" font-size="9.5">• Lớp chắn Nginx: limit_req 1 req/5s, trả 429 kèm Retry-After nếu thiết bị spam (Bảo vệ Server)</text>
+
+  <!-- ================= PHASE 2: GHÉP NỐI & CẤP TOKEN THỐNG NHẤT ================= -->
+  <rect x="30" y="410" width="1100" height="270" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#059669" stroke-width="1.5"/>
+  <rect x="38" y="418" width="460" height="24" rx="4" fill="url(#p2Grad)"/>
+  <text x="48" y="434" fill="#ffffff" font-size="11" font-weight="700">PHASE 2: NGƯỜI DÙNG GHÉP NỐI &amp; CẤP AUTHTOKEN AES-GCM THỐNG NHẤT (1A)</text>
+
+  <!-- Msg 6: Portal -> Manager API -->
+  <line x1="990" y1="460" x2="558" y2="460" stroke="#c084fc" stroke-width="2"/>
+  <polygon points="552,460 562,456 562,464" fill="#c084fc"/>
+  <text x="770" y="453" text-anchor="middle" fill="#e9d5ff" font-size="10">6. User nhập PIN 839201 trên Web Portal -> POST /api/v1/speaker/bind</text>
+
+  <!-- Msg 7: Manager -> DB (Bind speaker) -->
+  <line x1="550" y1="480" x2="762" y2="480" stroke="#34d399" stroke-width="2"/>
+  <polygon points="768,480 758,476 758,484" fill="#34d399"/>
+  <text x="660" y="473" text-anchor="middle" fill="#6ee7b7" font-size="10">7. Khớp PIN, gán speakers.user_id, set is_active=true, xóa mã PIN</text>
+
+  <!-- Msg 8: ESP -> Nginx (Nhịp poll tiếp theo) -->
+  <line x1="110" y1="510" x2="322" y2="510" stroke="#60a5fa" stroke-width="2"/>
+  <polygon points="328,510 318,506 318,514" fill="#60a5fa"/>
+  <text x="220" y="503" text-anchor="middle" fill="#93c5fd" font-size="10">8. Nhịp poll tiếp theo: POST /xiaozhi/ota/</text>
+
+  <!-- Msg 9: Manager -> ESP (Cấp 1 AuthToken AES-GCM) -->
+  <line x1="550" y1="535" x2="118" y2="535" stroke="#34d399" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <polygon points="112,535 122,531 122,539" fill="#34d399"/>
+  <text x="330" y="528" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">9. HTTP 200: CẤP 1 AUTHTOKEN AES-GCM DUY NHẤT (Payload: user_id, device_id, exp)</text>
+
+  <!-- Msg 10: ESP -> Voice Worker (WSS Connect) -->
+  <line x1="110" y1="570" x2="982" y2="570" stroke="#10b981" stroke-width="2.5"/>
+  <polygon points="988,570 978,565 978,575" fill="#10b981"/>
+  <text x="550" y="563" text-anchor="middle" fill="#a7f3d0" font-size="10.5" font-weight="700">10. WSS Connect /xiaozhi/v1/ (Header: Authorization Bearer &lt;AuthToken AES-GCM&gt;, Device-Id: MAC)</text>
+
+  <!-- Msg 11: Worker -> Redis (Register session) -->
+  <line x1="990" y1="600" x2="778" y2="600" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="772,600 782,596 782,604" fill="#38bdf8"/>
+  <text x="880" y="593" text-anchor="middle" fill="#7dd3fc" font-size="10">11. Giải mã Token, Đăng ký session:{mac} = worker_id lên Redis (&lt; 2ms)</text>
+
+  <!-- Success Banner -->
+  <rect x="55" y="625" width="1030" height="38" rx="5" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="570" y="648" text-anchor="middle" fill="#ecfdf5" font-size="11.5" font-weight="700">✓ BẮT TAY THÀNH CÔNG • THIẾT LẬP LUỒNG THOẠI OPUS 2 CHIỀU • DÙNG CHUNG TOKEN CHO VISION /mcp/vision/explain</text>
+
+  <!-- ================= PHASE 3: THU HỒI TỨC THÌ ================= -->
+  <rect x="30" y="695" width="1100" height="280" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="38" y="703" width="460" height="24" rx="4" fill="url(#p3Grad)"/>
+  <text x="48" y="719" fill="#ffffff" font-size="11" font-weight="700">PHASE 3: THU HỒI QUYỀN TỨC THÌ LIÊN CỤM (REAL-TIME REVOCATION &lt;= 500MS)</text>
+
+  <!-- Msg 12: User unbind -->
+  <line x1="990" y1="745" x2="558" y2="745" stroke="#f43f5e" stroke-width="2"/>
+  <polygon points="552,745 562,741 562,749" fill="#f43f5e"/>
+  <text x="770" y="738" text-anchor="middle" fill="#fda4af" font-size="10.5" font-weight="600">12. User bấm 'Hủy liên kết loa' trên Portal -> POST /api/v1/speaker/unbind</text>
+
+  <!-- Msg 13: Manager updates DB & sets revoked_before -->
+  <line x1="550" y1="770" x2="762" y2="770" stroke="#f59e0b" stroke-width="2"/>
+  <polygon points="768,770 758,766 758,774" fill="#f59e0b"/>
+  <text x="660" y="763" text-anchor="middle" fill="#fde68a" font-size="10">13. Cập nhật is_active=false, SET revoked_before:{mac} = now()</text>
+
+  <!-- Msg 14: Manager -> Redis Pub/Sub -->
+  <line x1="550" y1="800" x2="762" y2="800" stroke="#f43f5e" stroke-width="2.5"/>
+  <polygon points="768,800 758,796 758,804" fill="#f43f5e"/>
+  <text x="660" y="793" text-anchor="middle" fill="#fda4af" font-size="10.5" font-weight="700">14. PUBLISH 'xiaozhi:control:revoke' {device_id, reason: 'UNBOUND'}</text>
+
+  <!-- Msg 15: Redis -> Voice Worker (Pub/Sub message) -->
+  <line x1="770" y1="830" x2="982" y2="830" stroke="#f43f5e" stroke-width="2.5"/>
+  <polygon points="988,830 978,826 978,834" fill="#f43f5e"/>
+  <text x="880" y="823" text-anchor="middle" fill="#fda4af" font-size="10.5" font-weight="700">15. Worker đang giữ socket nhận sự kiện (&lt; 20ms)</text>
+
+  <!-- Msg 16: Worker -> ESP (Close WebSocket 4003) -->
+  <line x1="990" y1="865" x2="118" y2="865" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <polygon points="112,865 122,861 122,869" fill="#ef4444"/>
+  <text x="550" y="858" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="800">16. ĐÓNG WEBSOCKET NGAY LẬP TỨC ws.close(4003, 'Unbound') • TỔNG THỜI GIAN &lt;= 500MS (ĐẠT CHỈ TIÊU QG-05)</text>
+
+  <!-- Msg 17: Anti-reconnect explanation box -->
+  <rect x="55" y="890" width="1030" height="70" rx="5" fill="#0f172a" stroke="#f43f5e" stroke-width="1.2"/>
+  <text x="70" y="912" fill="#fda4af" font-size="11" font-weight="700">• Lớp phòng ngự chống kết nối lại (Defense in Depth):</text>
+  <text x="70" y="930" fill="#e2e8f0" font-size="10.5">  Nếu loa cố kết nối lại bằng Token cũ, bước bắt tay WebSocket và Vision sẽ đọc `revoked_before:{mac}` trên Redis.</text>
+  <text x="70" y="948" fill="#f87171" font-size="10.5" font-weight="600">  Vì Token có iat &lt; revoked_before, kết nối bị từ chối 100% (HTTP 401 / WS 4003). Chấm dứt hoàn toàn phiên hoạt động.</text>
+</svg>
